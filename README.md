@@ -6,23 +6,22 @@ Este proyecto se va a desplegar desde dos contenedores, uno desde el cuál se va
 Para llevar el proyecto a cabo se crean los archivos Dockerfile's en los que se van poner los comandos donde para crear las imagenes que va a contener la página web. Para que el usuario no ejecute comando a comando los archivos docker, se creó un archivo .sh en donde se encuentran las líneas que se van a ejecutar para crear las dos imagenes y posteriormente ponerlas a correr.
 De igual forma, el archivo api.py contiene el código de la página web en donde se hace el login: los usuarios se enuentran en el archivo de las bases de datos .csv, y el archivo front.py se encarga de la parte gráfica junto con la correcta ejecución del filtrado de los datos. Cada archivo .py contiene el requirements'Api-Front' donde se encuentran las librerías que necesitan de por sí para que estén en funcionamiento.
 
-El archivo DockerfileApi se interpreta de la siguiente forma: (De igual forma, se induce el DockerfileFront ya que contienen la misma estructura)
+'FROM ubuntu'. El archivo DockerfileApi se interpreta de la siguiente forma: (De igual forma, se induce el DockerfileFront ya que contienen la misma estructura)
 Especifica la imagen base en la que se basará la nueva imagen. En este caso, se utilizará la imagen base de Ubuntu.
-'FROM ubuntu'
-Estas línea ejecuta comandos dentro de la imagen durante la construcción. En este caso, se está actualizando el sistema operativo Ubuntu (apt update), instalando Python 3.10 (apt install python3.10 -y), y luego instalando pip para Python 3 (apt install python3-pip -y). 
+
 'RUN apt update'
 'RUN apt install python3.10 -y'
-'RUN apt install python3-pip -y'
-Se establece el directorio de trabajo dentro de la imagen donde se copiarán los archivos y se ejecutarán los comandos. En este caso, el directorio de trabajo se establece como /api.
-'WORKDIR /api'
-Copia el archivo api.py desde el contexto de construcción (donde se encuentra el Dockerfile) al directorio de trabajo (/api) dentro de la imagen.
-'COPY api.py .'
-Copia el archivo requirementsApi.txt desde el contexto de construcción al directorio de trabajo dentro de la imagen.
-'COPY requirementsApi.txt .'
-Ejecuta el comando pip3 install dentro de la imagen para instalar las dependencias especificadas en el archivo requirementsApi.txt. Las dependencias se instalan utilizando pip para Python 3.
-'RUN pip3 install -r requirementsApi.txt'
-Especifica el comando que se ejecutará cuando se inicie un contenedor a partir de esta imagen. En este caso, se ejecutará el archivo api.py utilizando el intérprete de Python 3.10 (python3.10).
-'CMD ["python3.10", "api.py"]'
+'RUN apt install python3-pip -y' Estas línea ejecuta comandos dentro de la imagen durante la construcción. En este caso, se está actualizando el sistema operativo Ubuntu (apt update), instalando Python 3.10 (apt install python3.10 -y), y luego instalando pip para Python 3 (apt install python3-pip -y). 
+
+'WORKDIR /api' Se establece el directorio de trabajo dentro de la imagen donde se copiarán los archivos y se ejecutarán los comandos. En este caso, el directorio de trabajo se establece como /api.
+
+'COPY api.py .' Copia el archivo api.py desde el contexto de construcción (donde se encuentra el Dockerfile) al directorio de trabajo (/api) dentro de la imagen.
+
+'COPY requirementsApi.txt .' Copia el archivo requirementsApi.txt desde el contexto de construcción al directorio de trabajo dentro de la imagen. 
+
+'RUN pip3 install -r requirementsApi.txt' Ejecuta el comando pip3 install dentro de la imagen para instalar las dependencias especificadas en el archivo requirementsApi.txt. Las dependencias se instalan utilizando pip para Python 3. 
+
+'CMD ["python3.10", "api.py"]' Especifica el comando que se ejecutará cuando se inicie un contenedor a partir de esta imagen. En este caso, se ejecutará el archivo api.py utilizando el intérprete de Python 3.10 (python3.10). 
 
 El archivo despliegue_contenedor.sh Contiene los siguientes comandos:
 #!/bin/bash
