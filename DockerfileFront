@@ -1,0 +1,9 @@
+FROM ubuntu
+RUN apt update
+RUN apt install python3.10 -y 
+RUN apt install python3-pip -y
+WORKDIR /front
+COPY requirementsFront.txt .
+RUN pip3 install -r requirementsFront.txt
+COPY front.py .
+CMD ["python3.10", "front.py"]
