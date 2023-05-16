@@ -6,8 +6,9 @@ Este proyecto se va a desplegar desde dos contenedores, uno desde el cuál se va
 Para llevar el proyecto a cabo se crean los archivos Dockerfile's en los que se van poner los comandos donde para crear las imagenes que va a contener la página web. Para que el usuario no ejecute comando a comando los archivos docker, se creó un archivo .sh en donde se encuentran las líneas que se van a ejecutar para crear las dos imagenes y posteriormente ponerlas a correr.
 De igual forma, el archivo api.py contiene el código de la página web en donde se hace el login: los usuarios se enuentran en el archivo de las bases de datos .csv, y el archivo front.py se encarga de la parte gráfica junto con la correcta ejecución del filtrado de los datos. Cada archivo .py contiene el requirements'Api-Front' donde se encuentran las librerías que necesitan de por sí para que estén en funcionamiento.
 
-'FROM ubuntu'. El archivo DockerfileApi se interpreta de la siguiente forma: (De igual forma, se induce el DockerfileFront ya que contienen la misma estructura)
-Especifica la imagen base en la que se basará la nueva imagen. En este caso, se utilizará la imagen base de Ubuntu.
+El archivo DockerfileApi se interpreta de la siguiente forma: (De igual forma, se induce el DockerfileFront ya que contienen la misma estructura)
+
+'FROM ubuntu'. Especifica la imagen base en la que se basará la nueva imagen. En este caso, se utilizará la imagen base de Ubuntu.
 
 'RUN apt update'
 'RUN apt install python3.10 -y'
