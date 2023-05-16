@@ -42,3 +42,6 @@ En caso de presentarse un error, se debe correr la imagen que se lista como 'Exi
 3. Se instalan previamente los programas necesarios para el despliegue de la aplicacion (sudo apt install docker-compose)
 4. Se ejecuta en archivo .csv con el comando 'bash despliegue_contenedor.csv'
 5. Se visualiza la página con la IP pública de la instancia
+
+# Inconvenientes
+Se presenta un error de URL dado por una equívoca redirección al servidor que contiene el login, esto se produce por problemas en el código del front.py ya que es el archivo que no logra tener estado Up.
